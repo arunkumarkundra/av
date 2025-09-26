@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages from the Universe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    
+    <div class="container">
+        <header class="app-header">
+            <h1 class="cosmic-title">Messages from the Universe</h1>
+            <p class="subtitle">Focus your mind, ask your question, and receive guidance from the cosmos</p>
+        </header>
+
+        <main class="message-area">
+            <div class="focus-state" id="focusState">
+                <div class="focus-circle">
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring delay-1"></div>
+                    <div class="pulse-ring delay-2"></div>
+                </div>
+                <p class="focus-text">
+                    <span class="instruction">Hold your question in your mind...</span>
+                    <span class="sub-instruction">Focus deeply and click when ready</span>
+                </p>
+                <button class="cosmic-button" id="askButton" disabled>
+                    <span class="button-text">Ask the Universe</span>
+                    <div class="button-stars"></div>
+                </button>
+                <div class="focus-timer" id="focusTimer">
+                    <div class="timer-fill"></div>
+                </div>
+            </div>
+
+            <div class="message-state hidden" id="messageState">
+                <div class="message-container">
+                    <div class="message-glow"></div>
+                    <div class="message-content">
+                        <div class="universe-icon">✨</div>
+                        <p class="message-text" id="messageText"></p>
+                        <div class="message-signature">— The Universe</div>
+                    </div>
+                </div>
+                <button class="ask-again-button" id="askAgainButton">
+                    Receive Another Message
+                </button>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>Trust in the wisdom that flows through you</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

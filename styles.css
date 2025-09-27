@@ -422,3 +422,170 @@ body {
         font-size: 1.2rem;
     }
 }
+
+
+/* Share button styles */
+.share-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: scale(0.8);
+    z-index: 10;
+}
+
+.share-button.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.share-button:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Share modal styles */
+.share-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.share-modal-content {
+    position: relative;
+    background: rgba(26, 26, 46, 0.95);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.share-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: #ffd700;
+    font-weight: 500;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    color: #e8e6e3;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffd700;
+}
+
+.share-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.share-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    color: #e8e6e3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.share-option:hover {
+    background: rgba(255, 215, 0, 0.1);
+    border-color: rgba(255, 215, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.share-icon {
+    font-size: 1.3rem;
+    width: 25px;
+    text-align: center;
+}
+
+/* Success message */
+.success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    color: #90EE90;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    z-index: 1001;
+    animation: successSlide 0.3s ease-out;
+}
+
+@keyframes successSlide {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

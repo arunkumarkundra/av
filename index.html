@@ -51,6 +51,9 @@
                         <div class="universe-icon">✨</div>
                         <p class="message-text" id="messageText"></p>
                         <div class="message-signature">— The Universe</div>
+                        <button class="share-button hidden" id="shareButton" title="Share this cosmic wisdom">
+                            📤
+                        </button>
                     </div>
                 </div>
                 <button class="ask-again-button" id="askAgainButton">
@@ -62,8 +65,33 @@
         <footer class="app-footer">
             <p>Trust in the wisdom that flows through you</p>
         </footer>
+        </div>
+    
+    <!-- Share Modal -->
+    <div class="share-modal hidden" id="shareModal">
+        <div class="share-modal-content">
+            <div class="share-modal-header">
+                <span>Share Cosmic Wisdom</span>
+                <button class="close-modal" id="closeModal">×</button>
+            </div>
+            <div class="share-options">
+                <button class="share-option" id="shareImage">
+                    <span class="share-icon">🖼️</span>
+                    <span>Download Image</span>
+                </button>
+                <button class="share-option" id="shareText">
+                    <span class="share-icon">📝</span>
+                    <span>Copy Text</span>
+                </button>
+            </div>
+        </div>
+        <div class="share-backdrop" id="shareBackdrop"></div>
     </div>
+    
+    <!-- Hidden canvas for image generation -->
+    <canvas id="shareCanvas" style="display: none;"></canvas>
 
+    
     <script src="script.js"></script>
 </body>
 </html>

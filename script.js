@@ -214,11 +214,28 @@ function generateAndDownloadImage() {
         ctx.fill();
     }
     
-    // App title
-    ctx.fillStyle = '#ffd700';
-    ctx.font = 'bold 48px serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('✨ AAKASHWAANI ✨', 540, 150);
+    // App logo
+    const img = new Image();
+    img.onload = function() {
+        // Calculate logo size (maintain aspect ratio)
+        const logoHeight = 80;
+        const logoWidth = (img.width / img.height) * logoHeight;
+        
+        // Center the logo
+        const logoX = (1080 - logoWidth) / 2;
+        const logoY = 80;
+        
+        ctx.drawImage(img, logoX, logoY, logoWidth, logoHeight);
+        
+        // Continue with the rest after logo loads
+        generateRestOfImage();
+    };
+    img.src = 'images/aakashwaani_logo.png';
+}
+
+function generateRestOfImage() {
+    const canvas = shareCanvas;
+    const ctx = canvas.getContext('2d');
     
     // Message text
     ctx.fillStyle = '#f0f0f0';
@@ -251,24 +268,28 @@ function generateAndDownloadImage() {
     ctx.font = 'italic 32px serif';
     ctx.fillText('— The Universe', 540, y + 100);
     
-    // Website URL
-    ctx.fillStyle = '#c9c7c5';
-    ctx.font = '28px sans-serif';
-    ctx.fillText('🌟 Get your message: ' + window.location.host, 540, 950);
+    // Website URL (moved lower and greyed out)
+    ctx.fillStyle = '#888888';
+    ctx.font = '24px sans-serif';
+    ctx.fillText('🌟 Get your message: ' + window.location.host, 540, 1020);
     
-    // Download the image
+    // Download with timestamp filename
     canvas.toBlob(function(blob) {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'cosmic-message.png';
+        
+        // Generate timestamp filename
+        const now = new Date();
+        const timestamp = now.toISOString().replace(/[:.]/g, '-').slice(0, -5);
+        a.download = `aakashwaani_${timestamp}.png`;
+        
         a.click();
         URL.revokeObjectURL(url);
         
         showSuccessMessage('Cosmic image downloaded! ✨');
     });
 }
-
 
 function showSuccessMessage(message) {
     const successDiv = document.createElement('div');

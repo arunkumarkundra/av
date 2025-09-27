@@ -65,9 +65,37 @@ body {
     margin-bottom: 4rem;
 }
 
-.cosmic-title {
+/* Hidden H1 for SEO */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Logo styling */
+.logo-link {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+.app-logo {
+    height: 60px;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Tagline styling (inherits from old cosmic-title) */
+.tagline {
     font-family: 'Cinzel', serif;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 600;
     background: linear-gradient(135deg, #ffd700, #ff69b4, #00bfff, #ffd700);
     background-size: 400% 400%;
@@ -77,6 +105,7 @@ body {
     animation: cosmicGlow 8s ease-in-out infinite;
     margin-bottom: 1rem;
     text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    line-height: 1.2;
 }
 
 .subtitle {
@@ -354,8 +383,12 @@ body {
         padding: 1rem;
     }
     
-    .cosmic-title {
-        font-size: 2.2rem;
+    .app-logo {
+        height: 45px;
+    }
+    
+    .tagline {
+        font-size: 1.8rem;
     }
     
     .focus-circle {
@@ -373,8 +406,12 @@ body {
 }
 
 @media (max-width: 480px) {
-    .cosmic-title {
-        font-size: 1.8rem;
+    .app-logo {
+        height: 35px;
+    }
+    
+    .tagline {
+        font-size: 1.4rem;
     }
     
     .subtitle {

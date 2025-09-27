@@ -246,7 +246,7 @@ function generateRestOfImage() {
     const words = message.split(' ');
     const maxWidth = 900;
     let line = '';
-    let y = 400;
+    let y = 450;
     
     for (let i = 0; i < words.length; i++) {
         const testLine = line + words[i] + ' ';
@@ -271,7 +271,7 @@ function generateRestOfImage() {
     // Website URL (moved lower and greyed out)
     ctx.fillStyle = '#888888';
     ctx.font = '24px sans-serif';
-    ctx.fillText('🌟 Get your message: ' + window.location.host, 540, 1020);
+    ctx.fillText('🌟 Get your message: ' + window.location.href, 540, 1020);
     
     // Download with timestamp filename
     canvas.toBlob(function(blob) {

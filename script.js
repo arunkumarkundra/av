@@ -10,6 +10,13 @@ const askAgainButton = document.getElementById('askAgainButton');
 const messageText = document.getElementById('messageText');
 const focusTimer = document.getElementById('focusTimer');
 const timerFill = focusTimer.querySelector('.timer-fill');
+const shareButton = document.getElementById('shareButton');
+const shareModal = document.getElementById('shareModal');
+const shareBackdrop = document.getElementById('shareBackdrop');
+const closeModal = document.getElementById('closeModal');
+const shareImage = document.getElementById('shareImage');
+const shareText = document.getElementById('shareText');
+const shareCanvas = document.getElementById('shareCanvas');
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', async function() {
@@ -34,6 +41,11 @@ async function loadMessages() {
 function initializeApp() {
     askButton.addEventListener('click', handleAskUniverse);
     askAgainButton.addEventListener('click', resetToFocus);
+    shareButton.addEventListener('click', openShareModal);
+    closeModal.addEventListener('click', closeShareModal);
+    shareBackdrop.addEventListener('click', closeShareModal);
+    shareImage.addEventListener('click', generateAndDownloadImage);
+    shareText.addEventListener('click', copyTextToClipboard);
     
     // Start focus sequence when page loads
     startFocusSequence();
@@ -105,6 +117,15 @@ function displayMessage(message) {
     
     // Add some cosmic sparkles effect
     createSparkles();
+    
+    // Show share button after a delay
+    setTimeout(() => {
+        const shareButton = document.getElementById('shareButton');
+        shareButton.classList.remove('hidden');
+        setTimeout(() => {
+            shareButton.classList.add('show');
+        }, 100);
+    }, 2000);
 }
 
 // Create sparkle effect when message appears
@@ -159,17 +180,146 @@ document.head.appendChild(sparkleStyle);
 
 // Reset to focus state
 function resetToFocus() {
-    // Hide message state
+    // Hide message state and share button
     messageState.classList.remove('show');
+    shareButton.classList.remove('show');
     
     setTimeout(() => {
         messageState.classList.add('hidden');
+        shareButton.classList.add('hidden');
         focusState.classList.remove('hidden');
         
         // Restart focus sequence
         startFocusSequence();
     }, 300);
 }
+
+// Share functionality
+function openShareModal() {
+    shareModal.classList.remove('hidden');
+}
+
+function closeShareModal() {
+    shareModal.classList.add('hidden');
+}
+
+function generateAndDownloadImage() {
+    const canvas = shareCanvas;
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas size (Instagram square format)
+    canvas.width = 1080;
+    canvas.height = 1080;
+    
+    // Create cosmic gradient background
+    const gradient = ctx.createRadialGradient(540, 540, 0, 540, 540, 540);
+    gradient.addColorStop(0, '#1a1a2e');
+    gradient.addColorStop(0.5, '#16213e');
+    gradient.addColorStop(1, '#0f0f23');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 1080, 1080);
+    
+    // Add stars
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+    for (let i = 0; i < 50; i++) {
+        const x = Math.random() * 1080;
+        const y = Math.random() * 1080;
+        const radius = Math.random() * 2 + 0.5;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+    
+    // App title
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'bold 48px serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('✨ AAKASHWAANI ✨', 540, 150);
+    
+    // Message text
+    ctx.fillStyle = '#f0f0f0';
+    ctx.font = '36px serif';
+    ctx.textAlign = 'center';
+    
+    const message = messageText.textContent;
+    const words = message.split(' ');
+    const maxWidth = 900;
+    let line = '';
+    let y = 400;
+    
+    for (let i = 0; i < words.length; i++) {
+        const testLine = line + words[i] + ' ';
+        const metrics = ctx.measureText(testLine);
+        const testWidth = metrics.width;
+        
+        if (testWidth > maxWidth && i > 0) {
+            ctx.fillText(line, 540, y);
+            line = words[i] + ' ';
+            y += 60;
+        } else {
+            line = testLine;
+        }
+    }
+    ctx.fillText(line, 540, y);
+    
+    // Signature
+    ctx.fillStyle = '#ffd700';
+    ctx.font = 'italic 32px serif';
+    ctx.fillText('— The Universe', 540, y + 100);
+    
+    // Website URL
+    ctx.fillStyle = '#c9c7c5';
+    ctx.font = '28px sans-serif';
+    ctx.fillText('🌟 Get your message: ' + window.location.host, 540, 950);
+    
+    // Download the image
+    canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'cosmic-message.png';
+        a.click();
+        URL.revokeObjectURL(url);
+        
+        showSuccessMessage('Image downloaded! 🌟');
+        closeShareModal();
+    });
+}
+
+function copyTextToClipboard() {
+    const textToShare = `"${messageText.textContent}"\n\n— The Universe\n\n🌟 Get your cosmic message: ${window.location.href}`;
+    
+    navigator.clipboard.writeText(textToShare).then(() => {
+        showSuccessMessage('Message copied to clipboard! ✨');
+        closeShareModal();
+    }).catch(() => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = textToShare;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        showSuccessMessage('Message copied to clipboard! ✨');
+        closeShareModal();
+    });
+}
+
+function showSuccessMessage(message) {
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message';
+    successDiv.textContent = message;
+    document.body.appendChild(successDiv);
+    
+    setTimeout(() => {
+        if (successDiv.parentNode) {
+            successDiv.parentNode.removeChild(successDiv);
+        }
+    }, 3000);
+}
+
+
 
 // Add some ambient cosmic sounds effect (optional - commented out)
 /*

@@ -11,11 +11,6 @@ const messageText = document.getElementById('messageText');
 const focusTimer = document.getElementById('focusTimer');
 const timerFill = focusTimer.querySelector('.timer-fill');
 const shareButton = document.getElementById('shareButton');
-const shareModal = document.getElementById('shareModal');
-const shareBackdrop = document.getElementById('shareBackdrop');
-const closeModal = document.getElementById('closeModal');
-const shareImage = document.getElementById('shareImage');
-const shareText = document.getElementById('shareText');
 const shareCanvas = document.getElementById('shareCanvas');
 
 // Initialize the app
@@ -41,11 +36,7 @@ async function loadMessages() {
 function initializeApp() {
     askButton.addEventListener('click', handleAskUniverse);
     askAgainButton.addEventListener('click', resetToFocus);
-    shareButton.addEventListener('click', openShareModal);
-    closeModal.addEventListener('click', closeShareModal);
-    shareBackdrop.addEventListener('click', closeShareModal);
-    shareImage.addEventListener('click', generateAndDownloadImage);
-    shareText.addEventListener('click', copyTextToClipboard);
+    shareButton.addEventListener('click', generateAndDownloadImage);
     
     // Start focus sequence when page loads
     startFocusSequence();
@@ -195,13 +186,6 @@ function resetToFocus() {
 }
 
 // Share functionality
-function openShareModal() {
-    shareModal.classList.remove('hidden');
-}
-
-function closeShareModal() {
-    shareModal.classList.add('hidden');
-}
 
 function generateAndDownloadImage() {
     const canvas = shareCanvas;
@@ -281,30 +265,10 @@ function generateAndDownloadImage() {
         a.click();
         URL.revokeObjectURL(url);
         
-        showSuccessMessage('Image downloaded! 🌟');
-        closeShareModal();
+        showSuccessMessage('Cosmic image downloaded! ✨');
     });
 }
 
-function copyTextToClipboard() {
-    const textToShare = `"${messageText.textContent}"\n\n— The Universe\n\n🌟 Get your cosmic message: ${window.location.href}`;
-    
-    navigator.clipboard.writeText(textToShare).then(() => {
-        showSuccessMessage('Message copied to clipboard! ✨');
-        closeShareModal();
-    }).catch(() => {
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = textToShare;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        
-        showSuccessMessage('Message copied to clipboard! ✨');
-        closeShareModal();
-    });
-}
 
 function showSuccessMessage(message) {
     const successDiv = document.createElement('div');

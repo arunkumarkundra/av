@@ -81,7 +81,7 @@ body {
 .logo-link {
     display: inline-block;
     text-decoration: none;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .app-logo {
@@ -95,7 +95,7 @@ body {
 /* Tagline styling (inherits from old cosmic-title) */
 .tagline {
     font-family: 'Cinzel', serif;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 600;
     background: linear-gradient(135deg, #ffd700, #ff69b4, #00bfff, #ffd700);
     background-size: 400% 400%;
@@ -388,7 +388,7 @@ body {
     }
     
     .tagline {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
     }
     
     .focus-circle {
@@ -411,7 +411,7 @@ body {
     }
     
     .tagline {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
     
     .subtitle {

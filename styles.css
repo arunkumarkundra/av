@@ -1,3 +1,8 @@
+/* ========================================
+   COSMIC ACCESSIBILITY ENHANCED STYLES
+   Maintaining mystical vibes while being inclusive
+   ======================================== */
+
 /* Reset and base styles */
 * {
     margin: 0;
@@ -45,6 +50,146 @@ body {
     to { transform: translateX(-400px); }
 }
 
+/* 🌟 MYSTICAL FOCUS STYLES - Instead of boring outlines */
+.cosmic-button:focus,
+.ask-again-button:focus,
+.share-button:focus,
+.logo-link:focus {
+    outline: none; /* Remove default */
+    position: relative;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Cosmic aura focus effect */
+.cosmic-button:focus::before,
+.ask-again-button:focus::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(45deg, #ffd700, #ff69b4, #00bfff, #ffd700);
+    background-size: 400% 400%;
+    border-radius: 60px;
+    z-index: -1;
+    animation: cosmicFocusGlow 2s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+@keyframes cosmicFocusGlow {
+    0%, 100% { 
+        background-position: 0% 50%; 
+        transform: scale(1);
+    }
+    50% { 
+        background-position: 100% 50%; 
+        transform: scale(1.02);
+    }
+}
+
+/* Share button cosmic focus */
+.share-button:focus::before {
+    content: '✨';
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    animation: float 1s ease-in-out infinite;
+    color: #ffd700;
+}
+
+/* Logo focus - cosmic ring */
+.logo-link:focus .app-logo {
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+    animation: logoFocusGlow 2s ease-in-out infinite;
+}
+
+@keyframes logoFocusGlow {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
+    50% { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1)); }
+}
+
+/* 🔮 ENHANCED REDUCED MOTION - Gentle cosmic effects for sensitive users */
+@media (prefers-reduced-motion: reduce) {
+    /* Keep the magic, reduce intensity */
+    .stars, .stars2, .stars3 {
+        animation-duration: 800s; /* Much slower movement */
+    }
+    
+    .pulse-ring {
+        animation: gentlePulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes gentlePulse {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.05); }
+    }
+    
+    .universe-icon {
+        animation: gentleFloat 6s ease-in-out infinite;
+    }
+    
+    @keyframes gentleFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-3px); }
+    }
+    
+    /* Maintain cosmic glow but reduce intensity */
+    .cosmicGlow, .cosmicFocusGlow {
+        animation-duration: 12s;
+    }
+}
+
+/* 🌙 HIGH CONTRAST MODE - Enhanced cosmic themes */
+@media (prefers-contrast: high) {
+    .cosmic-button:not(:disabled) {
+        background: linear-gradient(135deg, #000080, #4169e1);
+        border: 3px solid #ffd700;
+        color: #ffffff;
+    }
+    
+    .message-content {
+        background: rgba(0, 0, 0, 0.8);
+        border: 2px solid #ffd700;
+        color: #ffffff;
+    }
+    
+    .tagline {
+        text-shadow: 2px 2px 4px #000000;
+    }
+}
+
+/* ⌨️ SKIP LINK - Cosmic portal style */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #4a4a7a, #2d2d5f);
+    color: #ffd700;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    border: 2px solid #ffd700;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 20px;
+    outline: none;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    animation: skipLinkGlow 1s ease-in-out infinite;
+}
+
+@keyframes skipLinkGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); }
+    50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.9); }
+}
+
 /* Container and layout */
 .container {
     position: relative;
@@ -75,6 +220,36 @@ body {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+/* 🔊 SCREEN READER COSMIC ANNOUNCEMENTS */
+.sr-announcement {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* When announcement is active, briefly show cosmic effect */
+.sr-announcement.cosmic-announce {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    height: auto;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 0.5rem;
+    border-radius: 10px;
+    opacity: 0;
+    animation: cosmicAnnounce 0.5s ease-in-out;
+}
+
+@keyframes cosmicAnnounce {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.8; }
 }
 
 /* Logo styling */
@@ -234,6 +409,7 @@ body {
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
+    min-height: 48px; /* Accessibility: Minimum touch target */
 }
 
 .cosmic-button:disabled {
@@ -267,6 +443,32 @@ body {
     left: 100%;
 }
 
+/* 🌠 LOADING STATE COSMIC INDICATOR */
+.cosmic-button[aria-busy="true"] {
+    position: relative;
+    overflow: hidden;
+}
+
+.cosmic-button[aria-busy="true"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 215, 0, 0.4), 
+        transparent
+    );
+    animation: cosmicLoading 1.5s linear infinite;
+}
+
+@keyframes cosmicLoading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
 .button-text {
     position: relative;
     z-index: 2;
@@ -292,6 +494,29 @@ body {
     position: relative;
     max-width: 500px;
     margin-bottom: 2rem;
+}
+
+/* 🎨 FOCUS WITHIN ENHANCEMENTS */
+.message-container:focus-within {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.message-container:focus-within .message-glow {
+    animation: enhancedMessageGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes enhancedMessageGlow {
+    0% { 
+        opacity: 0.4; 
+        transform: scale(1);
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+    }
+    100% { 
+        opacity: 0.8; 
+        transform: scale(1.08);
+        box-shadow: 0 0 60px rgba(255, 215, 0, 0.5);
+    }
 }
 
 .message-glow {
@@ -356,6 +581,7 @@ body {
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    min-height: 48px; /* Accessibility: Minimum touch target */
 }
 
 .ask-again-button:hover {
@@ -364,12 +590,105 @@ body {
     transform: translateY(-2px);
 }
 
+/* Share button styles */
+.share-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: scale(0.8);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 44px; /* Accessibility: Minimum touch target */
+    min-width: 44px;
+}
+
+.share-button.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.share-button:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.6);
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
 /* Footer */
 .app-footer {
     margin-top: 4rem;
     opacity: 0.6;
     font-size: 0.9rem;
     font-weight: 300;
+}
+
+/* Success message */
+.success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    color: #90EE90;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    z-index: 1001;
+    animation: successSlide 0.3s ease-out;
+}
+
+@keyframes successSlide {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 🌌 ENHANCED ERROR STATES */
+.cosmic-error {
+    background: rgba(255, 69, 69, 0.1);
+    border: 2px solid rgba(255, 69, 69, 0.3);
+    color: #ff6b6b;
+    padding: 1rem;
+    border-radius: 15px;
+    margin: 1rem 0;
+    animation: errorPulse 2s ease-in-out infinite;
+}
+
+@keyframes errorPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(360deg);
+    }
 }
 
 /* Utility classes */
@@ -403,6 +722,28 @@ body {
     .message-text {
         font-size: 1.1rem;
     }
+    
+    /* Enhanced mobile accessibility */
+    .cosmic-button, .ask-again-button {
+        min-height: 48px;
+        min-width: 120px;
+        padding: 1rem 2rem;
+    }
+    
+    .share-button {
+        min-height: 44px;
+        min-width: 44px;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 38px;
+        height: 38px;
+    }
+    
+    /* Enhanced focus for mobile */
+    .cosmic-button:focus {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.4);
+    }
 }
 
 @media (max-width: 480px) {
@@ -433,87 +774,5 @@ body {
     
     .message-content {
         position: relative;
-    }
-}
-
-@media (max-width: 768px) {
-    /* Ensure share button is visible on tablets/mobile */
-    .share-button {
-        top: 0.75rem;
-        right: 0.75rem;
-        width: 38px;
-        height: 38px;
-    }
-    
-    /* Adjust modal for mobile */
-    .share-modal-content {
-        margin: 1rem;
-        padding: 1.5rem;
-    }
-    
-    .share-option {
-        padding: 0.875rem 1.25rem;
-        font-size: 0.95rem;
-    }
-}
-
-
-
-/* Share button styles */
-.share-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: scale(0.8);
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-tap-highlight-color: transparent;
-}
-.share-button.show {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.share-button:hover {
-    background: rgba(255, 215, 0, 0.2);
-    border-color: rgba(255, 215, 0, 0.6);
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-}
-
-
-/* Success message */
-.success-message {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 255, 0, 0.1);
-    border: 1px solid rgba(0, 255, 0, 0.3);
-    color: #90EE90;
-    padding: 1rem 1.5rem;
-    border-radius: 10px;
-    z-index: 1001;
-    animation: successSlide 0.3s ease-out;
-}
-
-@keyframes successSlide {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
     }
 }

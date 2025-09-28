@@ -1,76 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Messages from the Universe</title>
+    <title>Aakashwaani - Messages from the Universe | Cosmic Guidance</title>
+    <meta name="description" content="Receive mystical messages and cosmic guidance from the universe. Focus your mind, ask your question, and let the cosmos speak to your soul.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
+    <!-- 🌟 COSMIC SKIP NAVIGATION -->
+    <a href="#main-content" class="skip-link">Portal to Main Experience</a>
+    
+    <!-- Cosmic background layers -->
+    <div class="stars" aria-hidden="true"></div>
+    <div class="stars2" aria-hidden="true"></div>
+    <div class="stars3" aria-hidden="true"></div>
+    
+    <!-- 🔮 COSMIC ANNOUNCEMENTS FOR SCREEN READERS -->
+    <div id="cosmic-announcements" 
+         aria-live="polite" 
+         aria-atomic="true" 
+         class="sr-announcement"
+         role="status"></div>
     
     <div class="container">
-        <header class="app-header">
-            <h1 class="sr-only">Aakashwaani</h1>
-            <a href="/" class="logo-link">
-                <img src="images/aakashwaani_logo.png" alt="Aakashwaani - Messages from the Universe" class="app-logo">
+        <header class="app-header" role="banner">
+            <h1 class="sr-only">Aakashwaani - Messages from the Universe</h1>
+            <a href="/" 
+               class="logo-link" 
+               aria-label="Return to Aakashwaani cosmic homepage"
+               title="Return to cosmic guidance homepage">
+                <img src="images/aakashwaani_logo.png" 
+                     alt="Aakashwaani - Messages from the Universe" 
+                     class="app-logo">
             </a>
-            <p class="tagline">Messages from the Universe</p>
+            <p class="tagline" aria-label="Cosmic tagline">Messages from the Universe</p>
             <p class="subtitle">Focus your mind, ask your question, and receive guidance from the cosmos</p>
         </header>
 
-        <main class="message-area">
+        <main class="message-area" 
+              id="main-content" 
+              role="main" 
+              aria-label="Cosmic message interface">
+            
+            <!-- 🌙 FOCUS STATE WITH ENHANCED ACCESSIBILITY -->
             <div class="focus-state" id="focusState">
-                <div class="focus-circle">
-                    <div class="pulse-ring"></div>
-                    <div class="pulse-ring delay-1"></div>
-                    <div class="pulse-ring delay-2"></div>
+                <div class="focus-circle" 
+                     role="img" 
+                     aria-label="Cosmic focus rings pulsing with universal energy">
+                    <div class="pulse-ring" aria-hidden="true"></div>
+                    <div class="pulse-ring delay-1" aria-hidden="true"></div>
+                    <div class="pulse-ring delay-2" aria-hidden="true"></div>
                 </div>
-                <p class="focus-text">
+                
+                <div class="focus-text" id="focus-instructions">
                     <span class="instruction">Hold your question in your mind...</span>
                     <span class="sub-instruction">Focus deeply and click when ready</span>
-                </p>
-                <button class="cosmic-button" id="askButton" disabled>
+                </div>
+                
+                <!-- 🌟 ENHANCED COSMIC BUTTON -->
+                <button class="cosmic-button" 
+                        id="askButton" 
+                        disabled
+                        aria-describedby="focus-instructions cosmic-timer-status"
+                        aria-label="Ask the Universe for cosmic guidance - Please wait for focus preparation">
                     <span class="button-text">Ask the Universe</span>
-                    <div class="button-stars"></div>
+                    <div class="button-stars" aria-hidden="true"></div>
                 </button>
-                <div class="focus-timer" id="focusTimer">
+                
+                <!-- ⏱️ ACCESSIBLE FOCUS TIMER -->
+                <div class="focus-timer" 
+                     id="focusTimer"
+                     role="progressbar"
+                     aria-label="Focus preparation timer"
+                     aria-describedby="cosmic-timer-status"
+                     aria-valuenow="0"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
                     <div class="timer-fill"></div>
+                </div>
+                
+                <!-- Hidden status for screen readers -->
+                <div id="cosmic-timer-status" class="sr-only">
+                    Preparing cosmic connection...
                 </div>
             </div>
 
+            <!-- ✨ MESSAGE STATE WITH ENHANCED ACCESSIBILITY -->
             <div class="message-state hidden" id="messageState">
-                <div class="message-container">
-                    <div class="message-glow"></div>
+                <div class="message-container" 
+                     role="article" 
+                     aria-labelledby="universe-signature"
+                     tabindex="0"
+                     aria-describedby="cosmic-message-text">
+                    <div class="message-glow" aria-hidden="true"></div>
                     <div class="message-content">
-                        <div class="universe-icon">✨</div>
-                        <p class="message-text" id="messageText"></p>
-                        <div class="message-signature">— The Universe</div>
-                        <button class="share-button hidden" id="shareButton" title="Download cosmic image">
-                            ⬇️
+                        <div class="universe-icon" 
+                             role="img" 
+                             aria-label="Cosmic star symbol">✨</div>
+                        
+                        <!-- 🌌 ACCESSIBLE MESSAGE TEXT -->
+                        <p class="message-text" 
+                           id="cosmic-message-text"
+                           aria-live="polite"
+                           role="alert">
+                        </p>
+                        
+                        <div class="message-signature" 
+                             id="universe-signature">— The Universe</div>
+                        
+                        <!-- 📱 ENHANCED SHARE BUTTON -->
+                        <button class="share-button hidden" 
+                                id="shareButton" 
+                                aria-label="Download cosmic message as beautiful image"
+                                title="Download your cosmic message">
+                            <span aria-hidden="true">⬇️</span>
+                            <span class="sr-only">Download cosmic image</span>
                         </button>
                     </div>
                 </div>
-                <button class="ask-again-button" id="askAgainButton">
-                    Receive Another Message
+                
+                <!-- 🔄 ENHANCED ASK AGAIN BUTTON -->
+                <button class="ask-again-button" 
+                        id="askAgainButton"
+                        aria-label="Receive another cosmic message from the universe">
+                    <span>Receive Another Message</span>
                 </button>
             </div>
         </main>
 
-        <footer class="app-footer">
+        <footer class="app-footer" role="contentinfo">
             <p>Trust in the wisdom that flows through you</p>
         </footer>
-        </div>
+    </div>
         
-    <!-- Hidden canvas for image generation -->
-    <canvas id="shareCanvas" style="display: none;"></canvas>
+    <!-- Hidden canvas for cosmic image generation -->
+    <canvas id="shareCanvas" 
+            style="display: none;" 
+            aria-hidden="true"></canvas>
 
-    
     <script src="script.js"></script>
 </body>
 </html>

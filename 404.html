@@ -30,6 +30,18 @@
             width: 100%;
         }
 
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap; /* added to prevent text from wrapping */
+            border-width: 0;
+        }
+
         .logo {
             font-size: 2.5rem;
             font-weight: bold;
@@ -182,7 +194,7 @@
         <header class="app-header">
             <h1 class="sr-only">Aakashwaani</h1>
             <a href="." class="logo-link" aria-label="Aakashwaani home">
-                <img src="images/aakashwaani_logo.png" alt="Aakashwaani - Messages from the Universe" class="app-logo" width=auto height="60" >
+                <img src="./images/aakashwaani_logo.png" alt="Aakashwaani - Messages from the Universe" class="app-logo" width=auto height="60" >
             </a>
             <p class="tagline">Messages from the Universe</p>
             <p class="subtitle">Focus your mind, ask your question, and receive guidance from the cosmos</p>

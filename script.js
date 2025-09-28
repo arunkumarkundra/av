@@ -350,7 +350,7 @@ function generateRestOfImage() {
         a.click();
         URL.revokeObjectURL(url);
         
-        showSuccessMessage('Cosmic image downloaded! ✨');
+        showSuccessMessage('aakashwaani has been captured in the stars! ✨');
     });
 }
 
